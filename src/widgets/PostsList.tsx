@@ -1,35 +1,27 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {useGetPostsQuery} from "../shared/api";
 import Post from "../entities/post/Post";
-import {Alert, Box, LinearProgress, Typography} from "@mui/material";
+import {Box, LinearProgress} from "@mui/material";
+import {useNavigate} from 'react-router-dom';
+import EmptyMessage from "../shared/ui/EmptyMessage";
+import ErrorMessage from "../shared/ui/ErrorMessage";
 
 const PostsList = () => {
     const {data, error, isLoading} = useGetPostsQuery({start: 0})
-    const [errorIsOpen, setErrorIsOpen] = useState(false)
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        error && setErrorIsOpen(true)
-        setTimeout(() => setErrorIsOpen(false), 5000)
-    }, [error])
-
-
-    const getErrorMessage = () => {
-        if (error) {
-            if ('status' in error) {
-                return 'error' in error ? error.error : JSON.stringify(error.data)
-            } else {
-                return error.message
-            }
-        }
+    const onButtonCLick = (postId: number) => {
+        console.log(postId)
+        navigate(`/post/${postId}`)
     }
 
     return (
         <>
             {isLoading && <LinearProgress/>}
-            {errorIsOpen && <Alert sx={{m: 2, maxWidth: '300px'}} severity='error'>{getErrorMessage()}</Alert>}
+            {error && <ErrorMessage error={error}/>}
             {data ? <Box display={'grid'} gridTemplateColumns="repeat(5, 1fr)" m={2} gap={3}>
-                {data.map(post => <Post {...post} key={post.id}/>)}
-            </Box> : <Typography m={2} align={'center'}>{isLoading ? 'Loading your posts 😊' : 'Posts not found 😟'}</Typography>}
+                {data.map(post => <Post {...post} onClick={() => onButtonCLick(post.id)} key={post.id}/>)}
+            </Box> : <EmptyMessage isLoading={isLoading}/>}
         </>
     );
 };

@@ -1,15 +1,31 @@
-import React, {Suspense} from "react";
-import {BrowserRouter} from "react-router-dom";
-import {LinearProgress} from "@mui/material";
+import React from "react";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import PostPage from "../../pages/post-details";
+import MainPage from "../../pages/main-page";
+import AppLayout from "../../shared/ui/AppLayout";
 
-export const withRouter = (component: () => React.ReactNode) => () => {
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <AppLayout/>,
+        children: [
+            {
+                path: '/',
+                element: <MainPage/>
+            },
+            {
+                path: '/post/:postId',
+                element: <PostPage/>
+            }
+        ]
+
+    },
+
+
+]);
+
+export const withRouter = () => () => {
     return (
-        <BrowserRouter>
-            <Suspense
-                fallback={<LinearProgress/>}
-            >
-                {component()}
-            </Suspense>
-        </BrowserRouter>
+        <RouterProvider router={router}/>
     )
 }
