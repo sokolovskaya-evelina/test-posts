@@ -22,7 +22,7 @@ const Post = ({ title, id, body, isFull, onClick }: IPost & Props) => {
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>Post #{id}</Typography>
                 <Typography variant="h5" component="div">{title}</Typography>
                 <Typography variant="body2">
-                    {`${body.length >= 20 && !isFull ? body.substring(0, 50).trim() + '...' : body}`}
+                    {`${body.length >= 50 && !isFull ? body.substring(0, 50).trim() + '...' : body}`}
                 </Typography>
             </CardContent>
             {!isFull && <CardActions>
