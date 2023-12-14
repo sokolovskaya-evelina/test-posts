@@ -15,3 +15,9 @@
 * Для реализации скролла была использована библиотека *react-intersection-observer*
 
 ## [Deploy](https://test-posts-cyan.vercel.app/).
+
+## Разворот проекта локально
+1. git clone <u>*https://github.com/sokolovskaya-evelina/test-posts.git*</u>
+2. cd test-posts
+3. yarn / npm i
+4. yarn start / npm run start
