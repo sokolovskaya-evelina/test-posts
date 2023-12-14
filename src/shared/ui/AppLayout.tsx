@@ -1,19 +1,18 @@
-import React from 'react';
-import Header from "../../widgets/Header";
-import {useParams} from "react-router";
-import {Outlet} from "react-router-dom";
-import {Toolbar} from "@mui/material";
+import Header from '../../widgets/Header'
+import { useParams } from 'react-router'
+import { Outlet } from 'react-router-dom'
+import { Toolbar } from '@mui/material'
 
 const AppLayout = () => {
-    const {postId} = useParams()
+  const { postId } = useParams()
 
-    return (
+  return (
         <>
             <Header title={postId ? `Post #${postId}` : 'Your posts'}/>
             <Toolbar/>
             <Outlet/>
         </>
-    );
-};
+  )
+}
 
-export default AppLayout;
+export default AppLayout

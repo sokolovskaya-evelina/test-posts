@@ -1,11 +1,10 @@
-import React from 'react';
-import {Provider} from "react-redux";
-import {store} from "../store";
+import { Provider } from 'react-redux'
+import { store } from '../store'
 
 export const withStore = (component: () => React.ReactNode) => () => {
-    return <Provider store={store}>
+  return <Provider store={store}>
             {component()}
         </Provider>
-};
+}
 
-export default withStore;
+export default withStore

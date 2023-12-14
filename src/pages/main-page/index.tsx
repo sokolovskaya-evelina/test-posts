@@ -1,10 +1,9 @@
-import React from 'react';
-import PostsList from "../../widgets/PostsList";
+import PostsList from '../../widgets/PostsList'
 
 const MainPage = () => {
-    return (
+  return (
         <PostsList/>
-    );
-};
+  )
+}
 
-export default MainPage;
+export default MainPage

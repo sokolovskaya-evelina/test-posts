@@ -1,8 +1,7 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Header from "../widgets/Header";
+import { Outlet } from 'react-router-dom'
+import Header from '../widgets/Header'
 import './index.css'
-import {withProviders} from "./providers";
+import { withProviders } from './providers'
 
 const App = () => {
   return (
@@ -10,7 +9,7 @@ const App = () => {
         <Header title={'Your posts'}/>
         <Outlet/>
     </div>
-  );
+  )
 }
 
-export default withProviders(App);
+export default withProviders(App)
