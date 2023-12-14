@@ -2,8 +2,8 @@ import React from 'react';
 import {useParams} from "react-router";
 import {useGetPostByIdQuery} from "../../shared/api";
 import Post from "../../entities/post/Post";
-import {useNavigate} from "react-router-dom";
-import {LinearProgress} from "@mui/material";
+import {Link, useNavigate} from "react-router-dom";
+import {LinearProgress, Typography} from "@mui/material";
 import EmptyMessage from "../../shared/ui/EmptyMessage";
 import ErrorMessage from "../../shared/ui/ErrorMessage";
 
@@ -20,7 +20,7 @@ const PostPage = () => {
         <>
             {isLoading && <LinearProgress/>}
             {error && <ErrorMessage error={error}/>}
-            {data ? <Post {...data} onClick={onButtonCLick} isFull/> : <EmptyMessage isLoading={isLoading}/>}
+            {data ? <Post {...data} onClick={onButtonCLick} isFull/> : <EmptyMessage isLoading={isLoading} text={'Post not found'} children={<Typography m={2} align={'center'}>Please, return to the <Link to={'/'}>home</Link> page</Typography>}/>}
         </>
 
     );

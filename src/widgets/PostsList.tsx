@@ -21,7 +21,7 @@ const PostsList = () => {
             {error && <ErrorMessage error={error}/>}
             {data ? <Box display={'grid'} gridTemplateColumns="repeat(5, 1fr)" m={2} gap={3}>
                 {data.map(post => <Post {...post} onClick={() => onButtonCLick(post.id)} key={post.id}/>)}
-            </Box> : <EmptyMessage isLoading={isLoading}/>}
+            </Box> : <EmptyMessage isLoading={isLoading} text={'Posts not found'}/>}
         </>
     );
 };
