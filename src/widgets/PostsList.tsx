@@ -47,15 +47,15 @@ const PostsList: FC = () => {
 
   useEffect(() => {
     if (inViewFirstCard) {
-      setStart((prev) => (prev - 5) >= 0 ? prev - 5 : prev)
+      setStart(prevState => (prevState - 5) >= 0 ? prevState - 5 : prevState)
       setLimit(prevState => start > 15 ? prevState - 5 : prevState)
     }
   }, [inViewFirstCard])
 
   useEffect(() => {
     if (inViewLastCard) {
-      setLimit(prevState=> prevState + 15)
-      setStart(prevState => prevState + 15)
+      setLimit(prevState => prevState + 15)
+      setStart(prevState => limit > 30 ? prevState + 15 : prevState)
     }
   }, [inViewLastCard])
 
